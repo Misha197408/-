@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>"Прогнозируем прочность при растяжении"</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="cоотношение_матрица-наполнитель" placeholder="Соотношение_матрица-наполнитель" required="required" />
+        <input type="text" name="плотность_кг/м3" placeholder="Плотность,кг/м3" required="required" />
+		<input type="text" name="модуль_упругости_ГПа" placeholder="Модуль упругости, ГПа" required="required" />
+    <input type="text" name="количество отвердителя_м.%" placeholder="Количество отвердителя, м.%" required="required" />
+    <input type="text" name="содержание эпоксидных групп_%_2" placeholder="Содержание эпоксидных групп,%_2" required="required" />
+    <input type="text" name="температура_вспышки, С_2" placeholder="Температура" required="required" />
+    <input type="text" name="поверхностная_плотность_г/м2" placeholder="Поверхностная плотность, г/м2" required="required" />
+    <input type="text" name="прочность_при_растяжении_МПа" placeholder="Модуль упругости при растяжении, ГПа" required="required" />
+    <input type="text" name="потребление смолы_г/м2" placeholder="Потребление смолы, г/м2" required="required" />
+    <input type="text" name="угол_нашивки" placeholder="Угол нашивки" required="required" />
+    <input type="text" name="шаг_нашивки" placeholder="Шаг нашивки" required="required" />
+    <input type="text" name="плотность_нашивки" placeholder="Плотность нашивки" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
